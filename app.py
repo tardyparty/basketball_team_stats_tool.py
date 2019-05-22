@@ -45,7 +45,7 @@ def exp(clean_data):
                 experienced_players.append(player)
             else:
                 continue
-    return(experienced_players)
+    return experienced_players
 
 
 def non_exp(clean_data):
@@ -66,7 +66,7 @@ def build_team(exp, non_exp):
     bandits = exp_players[3:6] + non_exp_players[3:6]
     warriors = exp_players[6:] + non_exp_players[6:]
     teams = panthers, bandits, warriors
-    return(teams)
+    return teams
 
 
 def team_stats(stats):
@@ -88,7 +88,8 @@ def team_stats(stats):
     player_str = ", ".join(players)
     guardian_str = ", ".join(guardians)
     average_height = (sum(height)) / 6
-    return player_str, guardian_str, average_height
+    average_height = round(average_height, 2)
+    return [player_str, guardian_str, average_height]
 
 
 if __name__ == '__main__':
@@ -100,38 +101,38 @@ if __name__ == '__main__':
     warrior_stats = team_stats(build_team(exp(clean_data(player_copy)), non_exp(clean_data(player_copy)))[2:])
 
     while True:
-            print("----- Main Menu-----\n"
-                  "Here are your choices:\n"
-                  "1) Display Team Stats\n"
-                  "2) Quit\n"
-                  )
-            menu_choice = input("Enter an option >  ")
-            if menu_choice == '1':
-                print("\n1) {}\n"
-                      "2) {}\n"
-                      "3) {}\n\n" .format(team_copy[0], team_copy[1], team_copy[2]))
+        print("\n----- Main Menu-----\n"
+              "Here are your choices:\n"
+              "1) Display Team Stats\n"
+              "2) Quit\n"
+              )
+        menu_choice = input("Enter an option >  ")
+        if menu_choice == '1':
+            print("\n1) {}\n"
+                  "2) {}\n"
+                  "3) {}\n\n" .format(team_copy[0], team_copy[1], team_copy[2]))
 
-                stats_choice = input("Pick a team > ")
-                if stats_choice == '1':
-                    print("\nTeam name: {}\n".format(team_copy[0]))
-                    print("Total Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n")
-                    print("Roster: {}\n".format(panther_stats[:1]))
-                    print("Guardians: {}\n".format(panther_stats[1:2]))
-                    print("Average Height: {}\n".format(panther_stats[2:]))
-                    continue
-                elif stats_choice == '2':
-                    print("\nTeam name: {}\n".format(team_copy[1]))
-                    print("Total Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n")
-                    print("Roster: {}\n".format(bandit_stats[:1]))
-                    print("Guardians: {}\n".format(bandit_stats[1:2]))
-                    print("Average Height: {}\n".format(bandit_stats[2:]))
-                    continue
-                elif stats_choice == '3':
-                    print("\nTeam name: {}\n".format(team_copy[2]))
-                    print("Total Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n")
-                    print("Roster: {}\n".format(warrior_stats[:1]))
-                    print("Guardians: {}\n".format(warrior_stats[1:2]))
-                    print("Average Height: {}\n".format(warrior_stats[2:]))
-                    continue
-            elif menu_choice == '2':
-                break
+            stats_choice = input("Pick a team > ")
+            if stats_choice == '1':
+                print("\nTeam name: {}\n"
+                      "\nTotal Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n"
+                      "\nRoster: {}\n"
+                      "\nGuardians: {}\n"
+                      "\nAverage Height: {}\n".format(team_copy[0], panther_stats[0], panther_stats[1], panther_stats[2]))
+                continue
+            elif stats_choice == '2':
+                print("\nTeam name: {}\n"
+                      "\nTotal Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n"
+                      "\nRoster: {}\n"
+                      "\nGuardians: {}\n"
+                      "\nAverage Height: {}\n".format(team_copy[1], bandit_stats[0], bandit_stats[1], bandit_stats[2]))
+                continue
+            elif stats_choice == '3':
+                print("\nTeam name: {}\n"
+                      "\nTotal Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n"
+                      "\nRoster: {}\n"
+                      "\nGuardians: {}\n"
+                      "\nAverage Height: {}\n".format(team_copy[2], warrior_stats[0], warrior_stats[1], warrior_stats[2]))
+                continue
+        elif menu_choice == '2':
+            break
