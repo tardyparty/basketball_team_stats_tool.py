@@ -86,10 +86,9 @@ def team_stats(stats):
                 elif key == 'height':
                     height.append(value)
     player_str = ", ".join(players)
-    guardian_str = ", ".join(guardians)
     average_height = (sum(height)) / 6
     average_height = round(average_height, 2)
-    return [player_str, guardian_str, average_height]
+    return [player_str, guardians, average_height]
 
 
 if __name__ == '__main__':
@@ -118,21 +117,21 @@ if __name__ == '__main__':
                       "\nTotal Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n"
                       "\nRoster: {}\n"
                       "\nGuardians: {}\n"
-                      "\nAverage Height: {}\n".format(team_copy[0], panther_stats[0], panther_stats[1], panther_stats[2]))
+                      "\nAverage Height: {}\n".format(team_copy[0], panther_stats[0], ', '.join(panther_stats[1]), panther_stats[2]))
                 continue
             elif stats_choice == '2':
                 print("\nTeam name: {}\n"
                       "\nTotal Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n"
                       "\nRoster: {}\n"
                       "\nGuardians: {}\n"
-                      "\nAverage Height: {}\n".format(team_copy[1], bandit_stats[0], bandit_stats[1], bandit_stats[2]))
+                      "\nAverage Height: {}\n".format(team_copy[1], bandit_stats[0], ', '.join(bandit_stats[1]), bandit_stats[2]))
                 continue
             elif stats_choice == '3':
                 print("\nTeam name: {}\n"
                       "\nTotal Players: 6\n\nExperienced Players: 3\n\nInexperienced Players: 3\n"
                       "\nRoster: {}\n"
                       "\nGuardians: {}\n"
-                      "\nAverage Height: {}\n".format(team_copy[2], warrior_stats[0], warrior_stats[1], warrior_stats[2]))
+                      "\nAverage Height: {}\n".format(team_copy[2], warrior_stats[0], ', '.join(warrior_stats[1]), warrior_stats[2]))
                 continue
         elif menu_choice == '2':
             break
